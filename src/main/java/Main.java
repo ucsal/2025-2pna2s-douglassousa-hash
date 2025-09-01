@@ -7,8 +7,10 @@ public class Main {
 		Order o = new Order();
 		o.add(new Item("Café", 8.0, 2)); // 16
 		o.add(new Item("Bolo", 12.5, 1)); // 12.5 -> subtotal 28.5
-		String receipt = new ReceiptService().generate(o);
-		System.out.println(receipt);
+		
+		ReceiptService receipt = new ReceiptService(new TaxCalculator(0.10), new ReceiptFormatter());
+		
+		System.out.println(receipt.generate(o));
 		
 	}
 }
